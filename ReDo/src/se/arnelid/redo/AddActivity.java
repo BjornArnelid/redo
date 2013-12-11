@@ -1,11 +1,13 @@
 package se.arnelid.redo;
 
+import se.arnelid.redo.logic.Task;
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v4.app.NavUtils;
+import android.widget.EditText;
 
 public class AddActivity extends Activity {
 
@@ -13,24 +15,6 @@ public class AddActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add);
-		// Show the Up button in the action bar.
-		setupActionBar();
-	}
-
-	/**
-	 * Set up the {@link android.app.ActionBar}.
-	 */
-	private void setupActionBar() {
-
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add, menu);
-		return true;
 	}
 
 	@Override
@@ -51,7 +35,12 @@ public class AddActivity extends Activity {
 	}
 	
 	public void createTask(View view) {
-		NavUtils.navigateUpFromSameTask(this);
+		Intent intent = new Intent(AddActivity.this, MainActivity.class);
+		EditText edit = (EditText) findViewById(R.id.task_text);
+		CharSequence text = edit.getText();
+		Task task = new Task(text.toString());
+		intent.putExtra("Task", task);
+		AddActivity.this.startActivity(intent);
 	}
 
 }

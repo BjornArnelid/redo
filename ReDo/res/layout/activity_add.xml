@@ -17,7 +17,7 @@
         android:text="@string/task_string" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/task_text"
         android:layout_gravity="fill_horizontal"
         android:layout_row="1"
         android:ems="10"
@@ -27,7 +27,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/ok_button"
         android:layout_column="1"
         android:layout_gravity="right|bottom"
         android:layout_row="2"
