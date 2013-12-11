@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
 
@@ -118,7 +116,7 @@ public class MainActivity extends FragmentActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main_overview, container, false);
-            TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
+            //TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
             //dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }

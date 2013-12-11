@@ -21,7 +21,7 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
 	    activity = getActivity();
 	  }
 	
-//	public void testPressAdd() {
-//		assertEquals(GridLayout.class, activity.get)
-//	}
+	public void testPressAdd() {
+		fail(); 
+	}
 }
