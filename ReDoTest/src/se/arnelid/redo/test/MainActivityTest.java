@@ -1,7 +1,6 @@
 package se.arnelid.redo.test;
 
 import se.arnelid.redo.MainActivity;
-import se.arnelid.redo.logic.Task;
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.widget.Button;
@@ -20,8 +19,6 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
 		super.setUp();
 		Intent intent = new Intent(getInstrumentation().getTargetContext(),
 				MainActivity.class);
-		Task task = new Task("A Task");
-		intent.putExtra("Task", task);
 		startActivity(intent, null, null);
 		MainActivity activity = getActivity();
 		activity.setContentView(se.arnelid.redo.R.layout.activity_main);
@@ -42,7 +39,8 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
 		assertNotNull(triggered);
 	}
 	
-	public void testListAddTask() {
-		assertEquals(1, list.getCount());
+	// TODO Is this test really valid?
+	public void testListisEmpty() {
+		assertEquals(0, list.getCount());
 	}
 }
