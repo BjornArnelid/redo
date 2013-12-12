@@ -31,16 +31,16 @@ public class AddActivityTest extends ActivityUnitTestCase<AddActivity> {
 	}
 
 	public void testOKButtonCaption() {
-		assertEquals("Ok", ok.getText());
+		assertEquals("OK", ok.getText());
 	}
 	
-//	public void testPressOk() {
-//		int taskid = se.arnelid.redo.R.id.task_text;
-//		EditText task = (EditText) activity.findViewById(taskid);
-//		task.setText("A Task");
-//		ok.performClick();
-//		Task t = new Task("A Task");
-//		Intent triggered = getStartedActivityIntent();
-//		assertEquals(t, triggered.getExtras().get("Task"));
-//	}
+	public void testPressOk() {
+		int taskid = se.arnelid.redo.R.id.task_text;
+		EditText task = (EditText) activity.findViewById(taskid);
+		task.setText("A Task");
+		ok.performClick();
+		Task t = new Task("A Task");
+		Intent triggered = getStartedActivityIntent();
+		assertEquals(t, triggered.getExtras().get("Task"));
+	}
 }

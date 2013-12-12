@@ -4,7 +4,7 @@ import se.arnelid.redo.logic.RepeatingTask;
 import android.text.format.Time;
 import junit.framework.TestCase;
 
-public class RepeatingTaskUnitTest extends TestCase {
+public class RepeatingTaskTest extends TestCase {
 	
 	public void testGetInterval() {
 		RepeatingTask task = new RepeatingTask();

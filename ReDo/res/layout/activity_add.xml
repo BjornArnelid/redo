@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/textView1"
         android:layout_gravity="left"
-        android:text="@string/task_string" />
+        android:text="@string/label_task" />
 
     <EditText
         android:id="@+id/task_text"
@@ -32,7 +32,7 @@
         android:layout_gravity="right|bottom"
         android:layout_row="2"
         android:onClick="createTask"
-        android:text="@string/ok_string" 
+        android:text="@string/button_ok" 
         />
 
 </GridLayout>

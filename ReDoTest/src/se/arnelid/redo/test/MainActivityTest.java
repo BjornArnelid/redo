@@ -1,14 +1,17 @@
 package se.arnelid.redo.test;
 
 import se.arnelid.redo.MainActivity;
+import se.arnelid.redo.logic.Task;
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.widget.Button;
+import android.widget.ListView;
 
-public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
+public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
 	private Button add;
+	private ListView list;
 
-	public MainActivityUnitTest() {
+	public MainActivityTest() {
 		super(MainActivity.class);
 	}
 
@@ -17,11 +20,16 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
 		super.setUp();
 		Intent intent = new Intent(getInstrumentation().getTargetContext(),
 				MainActivity.class);
+		Task task = new Task("A Task");
+		intent.putExtra("Task", task);
 		startActivity(intent, null, null);
 		MainActivity activity = getActivity();
-		activity.setContentView(se.arnelid.redo.R.layout.fragment_main_overview);
+		activity.setContentView(se.arnelid.redo.R.layout.activity_main);
+		
 		int buttonid = se.arnelid.redo.R.id.add_button;
 		add = (Button) activity.findViewById(buttonid);
+		int listid = se.arnelid.redo.R.id.task_list;
+		list = (ListView) activity.findViewById(listid);
 	}
 
 	public void testAddButtonCaption() {
@@ -32,5 +40,9 @@ public class MainActivityUnitTest extends ActivityUnitTestCase<MainActivity> {
 		add.performClick();
 		Intent triggered = getStartedActivityIntent();
 		assertNotNull(triggered);
+	}
+	
+	public void testListAddTask() {
+		assertEquals(1, list.getCount());
 	}
 }
