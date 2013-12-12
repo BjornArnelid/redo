@@ -11,6 +11,16 @@ public class Task implements Serializable {
 	}
 
 	public boolean equals(Object other) {
-		return true;
+		if(other instanceof Task) {
+			Task otherTask = (Task) other;
+			if (name.equals(otherTask.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
