@@ -3,7 +3,7 @@ package se.arnelid.redo.test;
 import se.arnelid.redo.logic.Task;
 import junit.framework.TestCase;
 
-public class TaskUnitTest extends TestCase {
+public class TaskTest extends TestCase {
 	Task t1;
 	
 	protected void setUp() {
