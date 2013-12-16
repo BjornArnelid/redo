@@ -28,4 +28,8 @@ public class TaskTest extends TestCase {
 		Task t2 = new Task("Another Task");
 		assertFalse(t1.equals(t2));
 	}
+	
+	public void testToString() {
+		assertEquals("A Task", t1.toString());
+	}
 }

@@ -23,4 +23,8 @@ public class Task implements Serializable {
 	public String getName() {
 		return name;
 	}
+	
+	public String toString() {
+		return getName();
+	}
 }
