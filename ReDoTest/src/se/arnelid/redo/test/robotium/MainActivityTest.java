@@ -8,24 +8,38 @@ import android.test.ActivityInstrumentationTestCase2;
 public class MainActivityTest extends
 		ActivityInstrumentationTestCase2<MainActivity> {
 
+	private Solo solo;
+
 	public MainActivityTest() {
 		super(MainActivity.class);
 	}
 
 	protected void setUp() throws Exception {
 		super.setUp();
-	}
-
-	protected void tearDown() throws Exception {
-		super.tearDown();
+		solo = new Solo(getInstrumentation(), getActivity());
+		solo.assertCurrentActivity("wrong activity", MainActivity.class);
+		addActivity("A Task");
 	}
 	
-	public void testAddActivity() {
-		Solo solo = new Solo(getInstrumentation(), getActivity());
+	protected void tearDown() throws Exception {
+		solo.finishOpenedActivities();
+		super.tearDown();
+
+	}
+	
+	private void addActivity(String taskName) {
 		solo.clickOnButton("Add");
-		solo.enterText(0, "A Task");
+		solo.enterText(0, taskName);
 		solo.clickOnButton("OK");
-		assertTrue(solo.searchText("A Task"));
 	}
 
+	public void testAddActivity() {
+		assertTrue(solo.searchText("A Task"));
+	}
+	
+	public void testAdd2Activities() {
+		addActivity("Another Task");
+		assertTrue(solo.searchText("A Task"));
+		assertTrue(solo.searchText("Another Task"));
+	}
 }
