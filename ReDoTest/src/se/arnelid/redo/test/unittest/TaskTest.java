@@ -1,4 +1,4 @@
-package se.arnelid.redo.test;
+package se.arnelid.redo.test.unittest;
 
 import se.arnelid.redo.logic.Task;
 import junit.framework.TestCase;

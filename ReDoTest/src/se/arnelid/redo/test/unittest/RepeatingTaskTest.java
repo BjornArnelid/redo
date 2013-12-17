@@ -1,4 +1,4 @@
-package se.arnelid.redo.test;
+package se.arnelid.redo.test.unittest;
 
 import se.arnelid.redo.logic.RepeatingTask;
 import android.text.format.Time;
