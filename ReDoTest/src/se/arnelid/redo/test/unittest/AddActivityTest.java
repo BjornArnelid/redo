@@ -1,7 +1,7 @@
 package se.arnelid.redo.test.unittest;
 
 import se.arnelid.redo.AddActivity;
-import se.arnelid.redo.logic.Task;
+import se.arnelid.redo.model.Task;
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.widget.Button;

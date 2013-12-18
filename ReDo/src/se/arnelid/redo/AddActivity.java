@@ -1,20 +1,25 @@
 package se.arnelid.redo;
 
-import se.arnelid.redo.logic.Task;
-import android.os.Bundle;
+import se.arnelid.redo.model.TaskDataSource;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.view.View;
-import android.support.v4.app.NavUtils;
 import android.widget.EditText;
 
 public class AddActivity extends Activity {
+
+	private TaskDataSource datasource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add);
+		
+		datasource = new TaskDataSource(this);
+		datasource.open();
 	}
 
 	@Override
@@ -35,11 +40,11 @@ public class AddActivity extends Activity {
 	}
 	
 	public void createTask(View view) {
-		Intent intent = new Intent(AddActivity.this, MainActivity.class);
 		EditText edit = (EditText) findViewById(R.id.task_text);
 		CharSequence text = edit.getText();
-		Task task = new Task(text.toString());
-		intent.putExtra("Task", task);
+		datasource.createTask(text.toString());
+
+		Intent intent = new Intent(AddActivity.this, MainActivity.class);
 		AddActivity.this.startActivity(intent);
 	}
 

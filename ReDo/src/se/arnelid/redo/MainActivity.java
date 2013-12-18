@@ -1,34 +1,40 @@
 package se.arnelid.redo;
 
-import java.util.ArrayList;
-
-import se.arnelid.redo.logic.Task;
-import android.os.Bundle;
+import se.arnelid.redo.model.RedoSQLiteHelper;
+import se.arnelid.redo.model.TaskDataSource;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends Activity {
+
+	private TaskDataSource datasource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		ArrayList<Task> tasks = new ArrayList<Task>();
+		datasource = new TaskDataSource(this);
+		datasource.open();
 		
-		ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1, tasks);
+		String[] from = {RedoSQLiteHelper.NAME_COLUMN};
+		
+		int[] to = {R.id.task_list};
+		Cursor cursor = datasource.getCursor();
+		
+		ListAdapter adapter = new SimpleCursorAdapter(this,
+				android.R.layout.simple_list_item_1, cursor, from, to, 0);
 		
 		ListView listView = (ListView) findViewById(R.id.task_list);
 		listView.setAdapter(adapter);
-		Intent i = getIntent();
-		Task t = (Task) i.getSerializableExtra("Task");
-		if(t != null) {
-			tasks.add(t);
-		}
+
 	}
 
 	@Override

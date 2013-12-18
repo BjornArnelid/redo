@@ -1,6 +1,6 @@
 package se.arnelid.redo.test.unittest;
 
-import se.arnelid.redo.logic.Task;
+import se.arnelid.redo.model.Task;
 import junit.framework.TestCase;
 
 public class TaskTest extends TestCase {
@@ -22,6 +22,11 @@ public class TaskTest extends TestCase {
 	
 	public void testGetName() {
 		assertEquals("A Task", t1.getName());
+	}
+	
+	public void testSetName() {
+		t1.setName("Another name");
+		assertEquals("Another name", t1.getName());
 	}
 	
 	public void testTaskNotEquals() {

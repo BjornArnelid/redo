@@ -1,4 +1,4 @@
-package se.arnelid.redo.logic;
+package se.arnelid.redo.model;
 
 import java.io.Serializable;
 
@@ -10,6 +10,16 @@ public class Task implements Serializable {
 		name = inputString;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String string) {
+		name = string;
+		
+	}
+	
+	@Override
 	public boolean equals(Object other) {
 		if(other instanceof Task) {
 			Task otherTask = (Task) other;
@@ -19,11 +29,8 @@ public class Task implements Serializable {
 		}
 		return false;
 	}
-
-	public String getName() {
-		return name;
-	}
 	
+	@Override
 	public String toString() {
 		return getName();
 	}
