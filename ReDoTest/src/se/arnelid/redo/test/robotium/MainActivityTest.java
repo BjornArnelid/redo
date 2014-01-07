@@ -37,7 +37,7 @@ public class MainActivityTest extends
 	private void removeActivity(String string) {
 		if(solo.searchText(string)) {
 			solo.clickLongOnText(string);
-			//solo.clickOnButton("OK");
+			solo.clickOnButton("OK");
 		}
 	}
 
