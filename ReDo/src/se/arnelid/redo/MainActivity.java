@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 		
 		String[] from = {RedoSQLiteHelper.NAME_COLUMN};
 		
-		int[] to = {R.id.task_list};
+		int[] to = {android.R.id.text1};
 		Cursor cursor = datasource.getCursor();
 		
 		ListAdapter adapter = new SimpleCursorAdapter(this,
