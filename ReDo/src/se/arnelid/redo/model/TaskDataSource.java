@@ -33,4 +33,13 @@ public class TaskDataSource {
 		Cursor cursor = database.query(RedoSQLiteHelper.TASKS_TABLE, allColumns, null, null, null, null, null);
 		return cursor;
 	}
+
+	public boolean removeTask(long id) {
+		String clause = "_id = " + id;
+		int result = database.delete(RedoSQLiteHelper.TASKS_TABLE, clause, null);
+		if (result > 0) {
+			return true;
+		}
+		return false;
+	}
 }

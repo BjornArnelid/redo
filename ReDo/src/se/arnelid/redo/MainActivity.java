@@ -25,7 +25,6 @@ public class MainActivity extends Activity {
 		datasource.open();
 		
 		String[] from = {RedoSQLiteHelper.NAME_COLUMN};
-		
 		int[] to = {android.R.id.text1};
 		Cursor cursor = datasource.getCursor();
 		
@@ -33,6 +32,7 @@ public class MainActivity extends Activity {
 				android.R.layout.simple_list_item_1, cursor, from, to, 0);
 		
 		ListView listView = (ListView) findViewById(R.id.task_list);
+		listView.setOnItemLongClickListener(new DeleteListener(this));
 		listView.setAdapter(adapter);
 
 	}

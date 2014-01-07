@@ -22,15 +22,23 @@ public class MainActivityTest extends
 	}
 	
 	protected void tearDown() throws Exception {
+		removeActivity("A Task");
 		solo.finishOpenedActivities();
 		super.tearDown();
 
 	}
-	
+
 	private void addActivity(String taskName) {
 		solo.clickOnButton("Add");
 		solo.enterText(0, taskName);
 		solo.clickOnButton("OK");
+	}
+	
+	private void removeActivity(String string) {
+		if(solo.searchText(string)) {
+			solo.clickLongOnText(string);
+			//solo.clickOnButton("OK");
+		}
 	}
 
 	public void testAddActivity() {
@@ -41,5 +49,11 @@ public class MainActivityTest extends
 		addActivity("Another Task");
 		assertTrue(solo.searchText("A Task"));
 		assertTrue(solo.searchText("Another Task"));
+		removeActivity("Another Task");
+	}
+	
+	public void testRemoveActivity() {
+		removeActivity("A Task");
+		assertFalse(solo.searchText("A Task"));
 	}
 }
