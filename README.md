@@ -1,4 +1,4 @@
 redo
 ====
 
-Android todo list app for re occuring tasks
+Todo list for re occuring tasks
